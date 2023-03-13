@@ -12,6 +12,8 @@ import (
 func setUpRouters(app *fiber.App, Db *gorm.DB) {
 	api := app.Group("/api/v1")
 	routers.RegisterProductRouters(api.Group("/product"), Db)
+	routers.RegisterLoginRoutes(api.Group("/login"), Db)
+	routers.RegisterShoppingCarRouter(api.Group("/car"), Db)
 }
 
 func main() {
