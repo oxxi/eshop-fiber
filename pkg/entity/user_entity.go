@@ -1,6 +1,8 @@
 package entity
 
 import (
+	"fmt"
+
 	"github.com/oxxi/eshop/pkg/models"
 	"gorm.io/gorm"
 )
@@ -26,10 +28,13 @@ func (e UserEntity) FromEntity() models.UserModel {
 	}
 }
 
-/* func (e UserEntity) ToEntity(m models.UserModel) UserEntity {
+func ToRegisterUserEnity(m models.RegisterUserModel) UserEntity {
 	return UserEntity{
-		Name: m.Name,
-
+		Model:       &gorm.Model{},
+		Name:        fmt.Sprintf("%s %s", m.Name, m.LastName),
+		UserName:    m.UserName,
+		Email:       m.Email,
+		PhoneNumber: m.Phone,
+		Password:    []byte(m.Password),
 	}
 }
-*/
